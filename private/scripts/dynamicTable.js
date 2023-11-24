@@ -817,8 +817,7 @@ LogMessageTable: LogMessageTable,
             let rowPos = rows.length;
 
             while ((rowPos < trs.length) && (trs.length > 0)) {
-                trs[trs.length - 1].dispose();
-                trs.pop();
+                trs.pop().destroy();
             }
         },
 
@@ -840,7 +839,7 @@ LogMessageTable: LogMessageTable,
             this.selectedRows.erase(rowId);
             const tr = this.getTrByRowId(rowId);
             if (tr !== null) {
-                tr.dispose();
+                tr.destroy();
                 this.rows.erase(rowId);
                 return true;
             }
@@ -852,8 +851,7 @@ LogMessageTable: LogMessageTable,
             this.rows.empty();
             const trs = this.tableBody.getElements('tr');
             while (trs.length > 0) {
-                trs[trs.length - 1].dispose();
-                trs.pop();
+                trs.pop().destroy();
             }
         },
 
@@ -1586,7 +1584,7 @@ else {
 
                 if (!country_code) {
                     if (td.getChildren('img').length > 0)
-                        td.getChildren('img')[0].dispose();
+                        td.getChildren('img')[0].destroy();
                     return;
                 }
 
